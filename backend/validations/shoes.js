@@ -11,9 +11,6 @@ const validateShoeInput = [
     check('photoUrl')
         .exists({ checkFalsy: true })
         .withMessage('Photo URL is required'),
-    check('photoUrl')
-        .exists({ checkFalsy: true })
-        .withMessage('Photo URL is required'),
     check('description')
         .exists({ checkFalsy: true })
         .withMessage('Description is required'),

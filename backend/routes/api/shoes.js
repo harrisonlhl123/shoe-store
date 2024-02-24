@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
     try {
         const shoes = await Shoe.find()
             .populate('category', '_id name');
-        return res.json(categories);
+        return res.json(shoes);
     }
     catch (err) {
         return res.json([]);
