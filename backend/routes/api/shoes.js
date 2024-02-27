@@ -8,7 +8,12 @@ router.get('/', async (req, res) => {
     try {
         const shoes = await Shoe.find()
             .populate('category', '_id name');
-        return res.json(shoes);
+        
+        let shoesObject = {};
+        shoes.forEach((shoe) => {
+            shoesObject[shoe._id] = shoe
+        })
+        return res.json(shoesObject);
     }
     catch (err) {
         return res.json([]);

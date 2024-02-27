@@ -3,6 +3,12 @@ import { useDispatch } from "react-redux";
 import { fetchShoe } from "../../store/shoes";
 
 function OneShoe({shoe}) {
+    // const dispatch = useDispatch();
+
+    // useEffect(() => {
+    //     dispatch(fetchShoe(shoeId));
+    // }, [])
+
     return (
         <>
             <h3>{shoe.name}</h3>

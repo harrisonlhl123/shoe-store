@@ -13,10 +13,10 @@ function AllShoes() {
     }, [])
 
     return (
-        <>
-            {shoes.map((shoe) => {
-                <OneShoe shoe={shoe}/>
-            })}
+        <>  
+            {shoes.map((shoe) => (
+                <OneShoe key={shoe._id} shoe={shoe}/>
+            ))}
         </>
     )
 

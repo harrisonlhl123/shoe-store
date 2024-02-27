@@ -40,7 +40,7 @@ const generateShoe = (categories) => {
   return {
     name: generateShoeName(category.name),
     category: category._id,
-    photoUrl: `./j1-chi.jpeg`,
+    photoUrl: './j1-chi.jpeg',
     description: faker.lorem.sentence(),
     size: (Math.floor(Math.random() * 22) + 4) / 2, // Generates size between 4 and 14, including halves
     price: Math.floor(Math.random() * 601) + 200 // Generates price between 200 and 800
