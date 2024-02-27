@@ -1,10 +1,10 @@
+import AllShoes from "../Shoes/AllShoes";
+
 function MainPage() {
     return (
       <>
-        <p>A Twitter Clone</p>
-        <footer>
-          Copyright &copy; 2022 Chirper
-        </footer>
+        <p>test</p>
+        <AllShoes />
       </>
     );
   }
