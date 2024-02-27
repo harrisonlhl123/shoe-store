@@ -3,16 +3,11 @@ import { useDispatch } from "react-redux";
 import { fetchShoe } from "../../store/shoes";
 
 function OneShoe({shoe}) {
-    // const dispatch = useDispatch();
-
-    // useEffect(() => {
-    //     dispatch(fetchShoe(shoeId));
-    // }, [])
-
     return (
         <>
             <h3>{shoe.name}</h3>
-            <img src={`${shoe.photoUrl}`} />
+            {/* <img src={`${BASE_URL}/${shoe.photoUrl}`} /> */}
+            <img src={`http://localhost:5000/images/${shoe.photoUrl}`} />
             <p>{shoe.description}</p>
         </>
     )

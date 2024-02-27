@@ -2,6 +2,7 @@ const debug = require('debug');
 const express = require("express");
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const path = require('path'); // Import path module
 
 require('./models/User');
 require('./models/Category');
@@ -45,6 +46,11 @@ app.use(
       }
     })
 );
+
+
+// Serve static files from the 'seeders' directory
+app.use('/images', express.static(path.join(__dirname, 'seeders')));
+
 
 // Attach Express routers
 app.use('/api/users', usersRouter); // update the path
