@@ -4,14 +4,12 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 require('./models/User');
-require('./models/Tweet');
 require('./models/Category');
 require('./models/Shoe');
 require('./config/passport');
 const passport = require('passport');
 
 const usersRouter = require('./routes/api/users'); // update the import file path
-const tweetsRouter = require('./routes/api/tweets');
 const categoriesRouter = require('./routes/api/categories');
 const shoesRouter = require('./routes/api/shoes');
 const csrfRouter = require('./routes/api/csrf');
@@ -50,7 +48,6 @@ app.use(
 
 // Attach Express routers
 app.use('/api/users', usersRouter); // update the path
-app.use('/api/tweets', tweetsRouter);
 app.use('/api/categories', categoriesRouter);
 app.use('/api/shoes', shoesRouter);
 app.use('/api/csrf', csrfRouter);
