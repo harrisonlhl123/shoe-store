@@ -1,10 +1,13 @@
 import AllShoes from "../Shoes/AllShoes";
+import './MainPage.css'
 
 function MainPage() {
     return (
       <>
-        <p>test</p>
-        <AllShoes />
+        <div id="main-page">
+          <h1>Best Sellers</h1>
+          <AllShoes />
+        </div>
       </>
     );
   }

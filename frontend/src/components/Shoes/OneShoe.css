@@ -1,0 +1,14 @@
+#one-shoe-container {
+    width: 33%;
+    /* border: 1px solid red; */
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+#shoe-image {
+    max-width: 100%;
+}
+
+#show-page-text {
+    text-align: center;
+}

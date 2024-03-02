@@ -1,0 +1,4 @@
+#all-shoes {
+    display: flex;
+    flex-wrap: wrap;
+}
