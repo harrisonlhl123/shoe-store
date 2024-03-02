@@ -16,7 +16,8 @@ function NavBar () {
     if (loggedIn) {
       return (
         <div className="links-nav">
-          <Link to={'/profile'}>Profile</Link>
+          <i class="fa-solid fa-cart-shopping" style={{ marginRight: '5px' }}></i>
+          <Link to={'/profile'} style={{ marginRight: '5px' }}>Profile</Link>
           <button onClick={logoutUser}>Logout</button>
         </div>
       );
