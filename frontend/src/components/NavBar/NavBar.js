@@ -23,7 +23,7 @@ function NavBar () {
     } else {
       return (
         <div className="links-auth">
-          <Link to={'/signup'}>Signup</Link>
+          <Link to={'/signup'} style={{ marginRight: '5px' }}>Signup</Link>
           <Link to={'/login'}>Login</Link>
         </div>
       );
@@ -32,8 +32,10 @@ function NavBar () {
 
   return (
     <>
-      <h1>Chirper</h1>
-      { getLinks() }
+      <div id="nav-bar-container">
+        <h1>GOAT</h1>
+        { getLinks() }
+      </div>
     </>
   );
 }
