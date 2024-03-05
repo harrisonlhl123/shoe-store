@@ -14,9 +14,9 @@ const validateShoeInput = [
     check('description')
         .exists({ checkFalsy: true })
         .withMessage('Description is required'),
-    check('size')
-        .exists({ checkFalsy: true })
-        .withMessage('Size is required'),
+    // check('size')
+    //     .exists({ checkFalsy: true })
+    //     .withMessage('Size is required'),
     check('price')
         .exists({ checkFalsy: true })
         .withMessage('Price is required'),

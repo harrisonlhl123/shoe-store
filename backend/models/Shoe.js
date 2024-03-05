@@ -20,7 +20,7 @@ const shoeSchema = new Schema({
     },
     size: {
         type: Number,
-        required: true
+        // required: true
     },
     price: {
         type: Number,
