@@ -4,9 +4,36 @@
 
 #right-side-show, #left-side-show {
     width: 50%;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 #right-side-show > img {
     width: 100%;
+}
+
+#size-selection {
+    margin-top: 20px;
+}
+
+.size-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 10px;
+}
+
+.size-button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.size-button:hover {
+    background-color: #f0f0f0;
+}
+
+.size-button.selected {
+    background-color: #007bff;
+    color: #fff;
 }

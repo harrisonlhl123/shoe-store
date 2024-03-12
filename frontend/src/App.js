@@ -23,6 +23,7 @@ function App() {
 
   return loaded && (
     <>
+      <NavBar />
       <Switch>
         <Route exact path="/" component={MainPage} />
         <Route exact path="/shoes/:id" component={ShowShoe}/>
