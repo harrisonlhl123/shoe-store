@@ -9,6 +9,7 @@ import MainPage from './components/MainPage/MainPage';
 import LoginForm from './components/SessionForms/LoginForm';
 import SignupForm from './components/SessionForms/SignupForm';
 import Profile from './components/Profile/Profile';
+import ShowShoe from './components/Shoes/ShoeShow';
 
 import { getCurrentUser } from './store/session';
 import { Route } from 'react-router-dom/cjs/react-router-dom.min';
@@ -24,7 +25,7 @@ function App() {
     <>
       <Switch>
         <Route exact path="/" component={MainPage} />
-        {/* <Route exact path="/shoes/:id" component={ShoeShow}/> */}
+        <Route exact path="/shoes/:id" component={ShowShoe}/>
         <AuthRoute exact path="/login" component={LoginForm} />
         <AuthRoute exact path="/signup" component={SignupForm} />
 

@@ -1,0 +1,12 @@
+#show-main-div {
+    display: flex;
+}
+
+#right-side-show, #left-side-show {
+    width: 50%;
+    border: 1px solid red;
+}
+
+#right-side-show > img {
+    width: 100%;
+}
