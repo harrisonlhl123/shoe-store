@@ -1,5 +1,6 @@
 #show-main-div {
     display: flex;
+    font-family: sans-serif;
 }
 
 #right-side-show, #left-side-show {

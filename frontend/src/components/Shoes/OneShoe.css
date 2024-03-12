@@ -12,3 +12,8 @@
 #show-page-text {
     text-align: center;
 }
+
+.links {
+    text-decoration: none;
+    color: inherit;
+}

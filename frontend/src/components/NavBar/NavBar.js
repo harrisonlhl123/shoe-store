@@ -15,17 +15,17 @@ function NavBar () {
   const getLinks = () => {
     if (loggedIn) {
       return (
-        <div className="links-nav">
+        <div className="links-nav" style={{ fontFamily: 'sans-serif' }}>
           <i class="fa-solid fa-cart-shopping" style={{ marginRight: '5px' }}></i>
-          <Link to={'/profile'} style={{ marginRight: '5px' }}>Profile</Link>
+          <Link to={'/profile'} style={{ marginRight: '5px' }} className="links">Profile</Link>
           <button onClick={logoutUser}>Logout</button>
         </div>
       );
     } else {
       return (
-        <div className="links-auth">
-          <Link to={'/signup'} style={{ marginRight: '5px' }}>Signup</Link>
-          <Link to={'/login'}>Login</Link>
+        <div className="links-auth" style={{ fontFamily: 'sans-serif' }}>
+          <Link to={'/signup'} style={{ marginRight: '5px' }} className="links">Signup</Link>
+          <Link to={'/login'} className="links">Login</Link>
         </div>
       );
     }
@@ -33,8 +33,10 @@ function NavBar () {
 
   return (
     <>
-      <div id="nav-bar-container">
-        <h1>GOAT</h1>
+      <div id="nav-bar-container" style={{ fontFamily: 'sans-serif' }}>
+        <Link to="/" className="links">
+          <h1>GOAT</h1>
+        </Link>
         { getLinks() }
       </div>
     </>
