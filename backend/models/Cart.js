@@ -9,7 +9,7 @@ const cartSchema = new Schema({
     },
     items: {
         type: [{
-            shoe: {
+            shoeId: {
                 type: Schema.Types.ObjectId,
                 ref: 'Shoe'
             },
