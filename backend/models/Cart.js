@@ -7,14 +7,17 @@ const cartSchema = new Schema({
         ref: 'User',
         required: true
     },
-    items: [{
-        shoe: {
-            type: Schema.Types.ObjectId,
-            ref: 'Shoe'
-        },
-        size: Number,
-        quantity: Number
-    }]
+    items: {
+        type: [{
+            shoe: {
+                type: Schema.Types.ObjectId,
+                ref: 'Shoe'
+            },
+            size: Number,
+            quantity: Number
+        }],
+        required: true
+    }
 }, {
     timestamps: true
 });

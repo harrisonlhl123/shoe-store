@@ -5,6 +5,9 @@ const validateCartInput = [
     check('user')
         .exists({ checkFalsy: true })
         .withMessage('user is required'),
+    check('items')
+        .exists({ checkFalsy: true })
+        .withMessage('items array required'),
     handleValidationErrors
 ];
 
