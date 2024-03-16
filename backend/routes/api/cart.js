@@ -19,15 +19,19 @@ router.get('/user/:userId', requireUser, async (req, res) => {
 // Add items to cart
 router.post('/', requireUser, async (req, res) => {
     try {
-        const { items } = req.body;
-        console.log('Items:', items);
+        const { user: requestedUserId, items } = req.body;
+        const authenticatedUserId = req.user.id;
 
-        let cart = await Cart.findOne({ user: req.user.id }).populate('items.shoeId', '_id');
+        // Check if the requested user ID matches the authenticated user ID
+        if (requestedUserId !== authenticatedUserId) {
+            return res.status(403).json({ message: 'Unauthorized access to user cart' });
+        }
 
-        console.log('Cart:', cart);
+        // Continue with adding items to the cart for the authenticated user
+        let cart = await Cart.findOne({ user: authenticatedUserId }).populate('items.shoeId', '_id');
 
         if (!cart) {
-            cart = new Cart({ user: req.user.id, items: [] });
+            cart = new Cart({ user: authenticatedUserId, items: [] });
         } else {
             cart = await cart.populate('items.shoeId', '_id')
         }
