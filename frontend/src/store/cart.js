@@ -80,9 +80,8 @@ const cartReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_TO_CART:
         case REMOVE_FROM_CART:
-            return action.payload;
         case SET_CART:
-            return { ...newState, ...action.payload };
+            return action.payload;
         default:
             return state;
   }

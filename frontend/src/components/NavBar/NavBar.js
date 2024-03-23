@@ -18,7 +18,7 @@ function NavBar () {
       return (
         <div className="links-nav" style={{ fontFamily: 'sans-serif' }}>
           <i class="fa-solid fa-cart-shopping" style={{ marginRight: '5px' }}></i>
-          {cart && cart.items.length > 0 && (
+          {cart && cart.items && cart.items.length > 0 && (
             <span className="cart-count">{cart.items.length}</span>
           )}
           <Link to={'/profile'} style={{ marginRight: '5px' }} className="links">Profile</Link>
