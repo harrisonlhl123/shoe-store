@@ -57,9 +57,9 @@ export const removeFromCart = (itemId) => async (dispatch) => {
   }
 };
 
-export const fetchCart = () => async (dispatch) => {
+export const fetchCart = (userId) => async (dispatch) => {
   try {
-    const res = await jwtFetch('/api/cart/user/:userId');
+    const res = await jwtFetch(`/api/cart/user/${userId}`);
 
     if (res.ok) {
       const cart = await res.json();
@@ -75,13 +75,16 @@ const initialState = null;
 
 // Reducer
 const cartReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case ADD_TO_CART:
-    case REMOVE_FROM_CART:
-    case SET_CART:
-      return action.payload;
-    default:
-      return state;
+    let newState = {...state}
+
+    switch (action.type) {
+        case ADD_TO_CART:
+        case REMOVE_FROM_CART:
+            return action.payload;
+        case SET_CART:
+            return { ...newState, ...action.payload };
+        default:
+            return state;
   }
 };
 
