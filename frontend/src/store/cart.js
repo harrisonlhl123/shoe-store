@@ -22,24 +22,25 @@ const setCartAction = (cart) => ({
 });
 
 // Thunks
-export const addToCart = (shoeId, size) => async (dispatch) => {
-  try {
-    const res = await jwtFetch('/api/cart/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ items: [{ shoeId, size, quantity: 1 }] }),
-    });
-
-    if (res.ok) {
-      const cart = await res.json();
-      dispatch(addToCartAction(cart));
+export const addToCart = (shoeId, size, userId) => async (dispatch) => {
+    try {
+      const res = await jwtFetch('/api/cart/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ user: userId, items: [{ shoeId, size, quantity: 1 }] }),
+      });
+  
+      if (res.ok) {
+        const cart = await res.json();
+        dispatch(addToCartAction(cart));
+      }
+    } catch (error) {
+      console.error('Error adding to cart:', error);
     }
-  } catch (error) {
-    console.error('Error adding to cart:', error);
-  }
 };
+  
 
 export const removeFromCart = (itemId) => async (dispatch) => {
   try {
