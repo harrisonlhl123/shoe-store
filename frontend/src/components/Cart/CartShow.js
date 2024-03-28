@@ -20,14 +20,16 @@ const CartShow = () => {
     };
     
     return (
-        <div>
-            <h1>Cart Show page</h1>
-            <div>
+        <div className="cart-container"> {/* Add a container class */}
+            <h1>My Cart</h1>
+            <div className="cart-items">
                 {cart && Object.values(cart).map(item => (
-                    <div key={item._id}>
-                        <h3>{item.quantity} x {item.size}</h3>
-                        <ShoeDetails shoeId={item.shoeId._id} />
-                        <button onClick={() => handleRemoveFromCart(item._id)}>Remove</button>
+                    <div key={item._id} className="cart-item"> {/* Add a class for each cart item */}
+                        <div className="item-details">
+                            <h3>{item.quantity} x {item.size}</h3>
+                            <ShoeDetails shoeId={item.shoeId._id} />
+                        </div>
+                        <button className="remove-button" onClick={() => handleRemoveFromCart(item._id)}>Remove</button> {/* Add a class for the remove button */}
                     </div>
                 ))}
             </div>
@@ -44,7 +46,7 @@ const ShoeDetails = ({ shoeId }) => {
     const shoe = useSelector(state => state.shoes ? state.shoes[shoeId] : null)
 
     return (
-        <div>
+        <div className="shoe-details"> {/* Add a class for shoe details */}
             <img src={`http://localhost:5000/images/${shoe?.photoUrl}`} alt={shoe?.name} />
             <h4>{shoe?.name}</h4>
             <p>Price: ${shoe?.price}</p>
