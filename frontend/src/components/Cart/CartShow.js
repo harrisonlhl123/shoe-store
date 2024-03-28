@@ -16,23 +16,31 @@ const CartShow = () => {
     const cart = useSelector(state => state.cart?.items)
 
     const handleRemoveFromCart = (itemId) => {
-        dispatch(removeFromCart(itemId));
+        dispatch(removeFromCart(itemId))
+        .then(() => {
+            // Refetch cart items after removing an item
+            dispatch(fetchCart(user._id));
+        })
     };
     
     return (
         <div className="cart-container"> {/* Add a container class */}
             <h1>My Cart</h1>
-            <div className="cart-items">
-                {cart && Object.values(cart).map(item => (
-                    <div key={item._id} className="cart-item"> {/* Add a class for each cart item */}
-                        <div className="item-details">
-                            <h3>{item.quantity} x {item.size}</h3>
-                            <ShoeDetails shoeId={item.shoeId._id} />
+            {cart && Object.values(cart).length === 0 ? (
+                <p>Cart is empty.</p>
+            ) : (
+                <div className="cart-items">
+                    {cart && Object.values(cart).map(item => (
+                        <div key={item._id} className="cart-item"> {/* Add a class for each cart item */}
+                            <div className="item-details">
+                                <h3>{item.quantity} x {item.size}</h3>
+                                <ShoeDetails shoeId={item.shoeId._id} />
+                            </div>
+                            <button className="remove-button" onClick={() => handleRemoveFromCart(item._id)}>Remove</button> {/* Add a class for the remove button */}
                         </div>
-                        <button className="remove-button" onClick={() => handleRemoveFromCart(item._id)}>Remove</button> {/* Add a class for the remove button */}
-                    </div>
-                ))}
-            </div>
+                    ))}
+                </div>
+            )}
         </div>
     );
 }
