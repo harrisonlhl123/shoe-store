@@ -1,27 +1,3 @@
-// import { useEffect } from "react";
-// import { useDispatch } from "react-redux";
-// import { fetchCart } from "../../store/cart";
-// import { useSelector } from "react-redux/es/hooks/useSelector";
-
-
-// const CartShow = () => {
-//     const dispatch = useDispatch();
-//     const user = useSelector(state => state.session.user);
-
-//     useEffect(() => {
-//         dispatch(fetchCart(user._id))
-//     }, [])
-
-
-//     return (
-//         <h1>Cart Show page</h1>
-//     )
-// }
-
-// export default CartShow;
-
-
-
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { fetchCart } from "../../store/cart";
@@ -63,7 +39,7 @@ const ShoeDetails = ({ shoeId }) => {
 
     return (
         <div>
-            <img src={shoe?.photoUrl} alt={shoe?.name} />
+            {/* <img src={`http://localhost:5000/images/${shoe?.photoUrl}`} alt={shoe?.name} /> */}
             <h4>{shoe?.name}</h4>
             <p>Price: ${shoe?.price}</p>
         </div>
