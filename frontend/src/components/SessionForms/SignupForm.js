@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './SessionForm.css';
 import { signup, clearSessionErrors } from '../../store/session';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { fetchCart } from '../../store/cart';
+import { login } from '../../store/session';
 
 function SignupForm () {
   const [email, setEmail] = useState('');
@@ -10,6 +13,7 @@ function SignupForm () {
   const [password2, setPassword2] = useState('');
   const errors = useSelector(state => state.errors.session);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     return () => {
@@ -40,7 +44,17 @@ function SignupForm () {
     return e => setState(e.currentTarget.value);
   }
 
-  const handleSubmit = e => {
+  // const handleSubmit = e => {
+  //   e.preventDefault();
+  //   const user = {
+  //     email,
+  //     username,
+  //     password
+  //   };
+
+  //   dispatch(signup(user)); 
+  // }
+  const handleSubmit = async e => {
     e.preventDefault();
     const user = {
       email,
@@ -48,7 +62,15 @@ function SignupForm () {
       password
     };
 
-    dispatch(signup(user)); 
+    // Dispatch signup action
+    const action = await dispatch(signup(user)); 
+
+    const userCart = action.currentUser
+    console.log('User after login:', userCart);
+    if (userCart) {
+      // Fetch empty cart for the newly signed-up user
+      dispatch(fetchCart(userCart._id));
+    }
   }
 
   return (

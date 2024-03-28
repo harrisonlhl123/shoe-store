@@ -1,12 +1,14 @@
 import './ShoeShow.css'
+import { addToCart } from '../../store/cart';
 const { useEffect, useState } = require("react");
 const { useDispatch, useSelector } = require("react-redux");
-const { useParams } = require("react-router-dom/cjs/react-router-dom.min");
+const { useParams, useHistory } = require("react-router-dom/cjs/react-router-dom.min");
 const { fetchShoes } = require("../../store/shoes");
 
 
 const ShowShoe = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const { id } = useParams();
     const [selectedSize, setSelectedSize] = useState(null);
     
@@ -15,13 +17,20 @@ const ShowShoe = () => {
     }, [id])
     
     const shoe = useSelector(state => state.shoes ? state.shoes[id] : null)
+    const cart = useSelector((state) => state.cart);
+    const user = useSelector(state => state.session.user?._id);
 
-    // Function to handle adding the shoe to the cart
     const handleAddToCart = () => {
-        // Add logic here to handle adding the shoe to the cart
-        // You can dispatch an action to update the cart state
-        console.log('Shoe added to cart:', shoe);
-    }
+        if (!user) {
+            // Redirect to login page if user is not logged in
+            history.push('/login');
+            return;
+        }
+
+        if (selectedSize) {
+          dispatch(addToCart(shoe._id, selectedSize, user));
+        }
+    };
 
     const handleSizeSelect = (size) => {
         setSelectedSize(size);

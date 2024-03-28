@@ -6,6 +6,7 @@ import { logout } from '../../store/session';
 function NavBar () {
   const loggedIn = useSelector(state => !!state.session.user);
   const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart);
   
   const logoutUser = e => {
       e.preventDefault();
@@ -16,7 +17,12 @@ function NavBar () {
     if (loggedIn) {
       return (
         <div className="links-nav" style={{ fontFamily: 'sans-serif' }}>
-          <i class="fa-solid fa-cart-shopping" style={{ marginRight: '5px' }}></i>
+          <Link to={'/cart'}>
+            <i class="fa-solid fa-cart-shopping" style={{ marginRight: '5px' }}></i>
+          </Link>
+          {cart && cart.items && cart.items.length > 0 && (
+            <span className="cart-count">{cart.items.length}</span>
+          )}
           <Link to={'/profile'} style={{ marginRight: '5px' }} className="links">Profile</Link>
           <button onClick={logoutUser}>Logout</button>
         </div>

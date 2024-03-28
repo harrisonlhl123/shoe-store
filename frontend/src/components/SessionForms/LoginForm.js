@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import './SessionForm.css';
 
 import { login, clearSessionErrors } from '../../store/session';
+import { fetchCart } from '../../store/cart'; // Import the action to fetch cart
 
 function LoginForm () {
   const [email, setEmail] = useState('');
@@ -21,10 +22,20 @@ function LoginForm () {
     return e => setState(e.currentTarget.value);
   }
 
-  const handleSubmit = (e) => {
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   dispatch(login({ email, password })); 
+  // }
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(login({ email, password })); 
-  }
+    const action = await dispatch(login({ email, password })); // Dispatch login action
+    const user = action.currentUser; // Extract currentUser object
+    console.log('User after login:', user); // Log the user object
+    if (user) {
+      // If login is successful, fetch the user's cart
+      dispatch(fetchCart(user._id));
+    }
+  }  
 
   return (
     <form className="session-form" onSubmit={handleSubmit}>

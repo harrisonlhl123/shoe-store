@@ -7,12 +7,14 @@ const path = require('path'); // Import path module
 require('./models/User');
 require('./models/Category');
 require('./models/Shoe');
+require('./models/Cart');
 require('./config/passport');
 const passport = require('passport');
 
 const usersRouter = require('./routes/api/users'); // update the import file path
 const categoriesRouter = require('./routes/api/categories');
 const shoesRouter = require('./routes/api/shoes');
+const cartsRouter = require('./routes/api/cart');
 const csrfRouter = require('./routes/api/csrf');
 
 const app = express();
@@ -56,6 +58,7 @@ app.use('/images', express.static(path.join(__dirname, 'seeders')));
 app.use('/api/users', usersRouter); // update the path
 app.use('/api/categories', categoriesRouter);
 app.use('/api/shoes', shoesRouter);
+app.use('/api/cart', cartsRouter);
 app.use('/api/csrf', csrfRouter);
 
 // Express custom middleware for catching all unmatched requests and formatting
