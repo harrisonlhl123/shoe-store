@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { fetchCart } from "../../store/cart";
+import { fetchCart, removeFromCart } from "../../store/cart";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { fetchShoe, fetchShoes } from "../../store/shoes";
+import './CartShow.css';
 
 const CartShow = () => {
     const dispatch = useDispatch();
@@ -13,6 +14,10 @@ const CartShow = () => {
     }, []);
 
     const cart = useSelector(state => state.cart?.items)
+
+    const handleRemoveFromCart = (itemId) => {
+        dispatch(removeFromCart(itemId));
+    };
     
     return (
         <div>
@@ -22,6 +27,7 @@ const CartShow = () => {
                     <div key={item._id}>
                         <h3>{item.quantity} x {item.size}</h3>
                         <ShoeDetails shoeId={item.shoeId._id} />
+                        <button onClick={() => handleRemoveFromCart(item._id)}>Remove</button>
                     </div>
                 ))}
             </div>
@@ -39,7 +45,7 @@ const ShoeDetails = ({ shoeId }) => {
 
     return (
         <div>
-            {/* <img src={`http://localhost:5000/images/${shoe?.photoUrl}`} alt={shoe?.name} /> */}
+            <img src={`http://localhost:5000/images/${shoe?.photoUrl}`} alt={shoe?.name} />
             <h4>{shoe?.name}</h4>
             <p>Price: ${shoe?.price}</p>
         </div>
