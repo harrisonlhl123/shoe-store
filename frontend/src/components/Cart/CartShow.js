@@ -50,7 +50,11 @@ const CartShow = () => {
                         <div key={item._id} className="cart-item"> {/* Add a class for each cart item */}
                             <div className="item-details">
                                 <h3>{item.quantity} x {item.size}</h3>
-                                <ShoeDetails shoeId={item.shoeId._id} />
+                                <div className="shoe-details"> {/* Add a class for shoe details */}
+                                    <img src={`http://localhost:5000/images/${item.shoeId.photoUrl}`} alt={item.shoeId.name} />
+                                    <h4>{item.shoeId.name}</h4>
+                                    <p>Price: ${item.shoeId.price}</p>
+                                </div>
                             </div>
                             <button className="remove-button" onClick={() => handleRemoveFromCart(item._id)}>Remove</button> {/* Add a class for the remove button */}
                         </div>
@@ -59,23 +63,6 @@ const CartShow = () => {
                     <button onClick={handleDeleteCart}>Checkout</button>
                 </div>
             )}
-        </div>
-    );
-}
-
-const ShoeDetails = ({ shoeId }) => {
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(fetchShoes());
-    }, [])
-
-    const shoe = useSelector(state => state.shoes ? state.shoes[shoeId] : null)
-
-    return (
-        <div className="shoe-details"> {/* Add a class for shoe details */}
-            <img src={`http://localhost:5000/images/${shoe?.photoUrl}`} alt={shoe?.name} />
-            <h4>{shoe?.name}</h4>
-            <p>Price: ${shoe?.price}</p>
         </div>
     );
 }
