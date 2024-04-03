@@ -1,19 +1,22 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { fetchCart, removeFromCart } from "../../store/cart";
+import { fetchCart, removeFromCart, deleteCart } from "../../store/cart";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { fetchShoe, fetchShoes } from "../../store/shoes";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import './CartShow.css';
 
 const CartShow = () => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user);
+    const history = useHistory();
 
     useEffect(() => {
         dispatch(fetchCart(user._id))
     }, []);
 
     const cart = useSelector(state => state.cart?.items)
+    const cartId = useSelector(state => state.cart?._id)
 
     const handleRemoveFromCart = (itemId) => {
         dispatch(removeFromCart(itemId))
@@ -22,6 +25,14 @@ const CartShow = () => {
             dispatch(fetchCart(user._id));
         })
     };
+
+    const handleDeleteCart = () => {
+        dispatch(deleteCart(cartId))
+        .then(() => {
+            dispatch(fetchCart(user._id));
+            history.push('/thanks');
+        })
+    }
     
     return (
         <div className="cart-container"> {/* Add a container class */}
@@ -41,6 +52,8 @@ const CartShow = () => {
                     ))}
                 </div>
             )}
+
+            {cart && Object.values(cart).length != 0 && <button onClick={handleDeleteCart}>Checkout</button>}
         </div>
     );
 }

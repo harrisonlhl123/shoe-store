@@ -11,6 +11,7 @@ import SignupForm from './components/SessionForms/SignupForm';
 import Profile from './components/Profile/Profile';
 import ShowShoe from './components/Shoes/ShoeShow';
 import CartShow from './components/Cart/CartShow';
+import Thanks from './components/Cart/Thanks';
 
 import { getCurrentUser } from './store/session';
 import { Route } from 'react-router-dom/cjs/react-router-dom.min';
@@ -33,6 +34,7 @@ function App() {
 
         <ProtectedRoute exact path="/profile" component={Profile} />
         <ProtectedRoute exact path="/cart" component={CartShow}/>
+        <ProtectedRoute exact path="/thanks" component={Thanks} />
       </Switch>
     </>
   );
