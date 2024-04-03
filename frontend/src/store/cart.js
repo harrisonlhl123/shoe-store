@@ -4,6 +4,7 @@ import jwtFetch from './jwt';
 const ADD_TO_CART = 'cart/ADD_TO_CART';
 const REMOVE_FROM_CART = 'cart/REMOVE_FROM_CART';
 const SET_CART = 'cart/SET_CART';
+const DELETE_CART = 'cart/DELETE_CART';
 
 // Action creators
 const addToCartAction = (item) => ({
@@ -20,6 +21,11 @@ const setCartAction = (cart) => ({
   type: SET_CART,
   payload: cart,
 });
+
+const deleteCartAction = (id) => ({
+  type: DELETE_CART,
+  payload: id,
+})
 
 // Thunks
 export const addToCart = (shoeId, size, userId) => async (dispatch) => {
@@ -70,6 +76,20 @@ export const fetchCart = (userId) => async (dispatch) => {
   }
 };
 
+export const deleteCart = (id) => async (dispatch) => {
+  try {
+    const res = await jwtFetch(`/api/cart/${id}`, {
+      method: 'DELETE',
+    });
+
+    if (res.ok) {
+      dispatch(deleteCartAction(id));
+    }
+  } catch (error) {
+    console.error('Error removing from cart:', error);
+  }
+};
+
 // Initial state
 const initialState = null;
 
@@ -81,7 +101,10 @@ const cartReducer = (state = initialState, action) => {
         case ADD_TO_CART:
         case REMOVE_FROM_CART:
         case SET_CART:
-            return action.payload;
+          return action.payload;
+        case DELETE_CART:
+          delete newState[action.payload]
+          return newState
         default:
             return state;
   }
