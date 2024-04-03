@@ -44,7 +44,7 @@ export const addToCart = (shoeId, size, userId) => async (dispatch) => {
 
 export const removeFromCart = (itemId) => async (dispatch) => {
   try {
-    const res = await jwtFetch(`/api/cart/${itemId}`, {
+    const res = await jwtFetch(`/api/cart/shoes/${itemId}`, {
       method: 'DELETE',
     });
 

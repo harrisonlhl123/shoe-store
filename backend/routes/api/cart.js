@@ -78,7 +78,7 @@ router.post('/', requireUser, async (req, res) => {
 
 
 // Remove item from cart
-router.delete('/:itemId', requireUser, async (req, res) => {
+router.delete('/shoes/:itemId', requireUser, async (req, res) => {
     try {
         const authenticatedUserId = req.user.id;
 
@@ -102,6 +102,27 @@ router.delete('/:itemId', requireUser, async (req, res) => {
         res.status(500).json({ message: 'Server Error' });
     }
 });
+
+
+// Clear cart for checkout function
+router.delete('/:id', requireUser, async (req, res) => {
+    try {
+        const authenticatedUserId = req.user.id;
+
+        const cart = await Cart.findOneAndDelete({ 
+            _id: req.params.id,
+            user: authenticatedUserId
+        });
+
+        if (!cart) {
+            return res.status(404).json({ message: 'Cart not found' });
+        }
+        res.json({ message: 'Cart deleted successfully' });
+    } catch (err) {
+        res.status(500).json({ message: 'Server Error' });
+    }
+});
+
 
 module.exports = router;
 
