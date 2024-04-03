@@ -33,6 +33,11 @@ const CartShow = () => {
             history.push('/thanks');
         })
     }
+
+    // Calculate total price
+    const totalPrice = cart && Object.values(cart).reduce((total, item) => {
+        return total + (item.quantity * item.shoeId.price);
+    }, 0);
     
     return (
         <div className="cart-container"> {/* Add a container class */}
@@ -50,10 +55,10 @@ const CartShow = () => {
                             <button className="remove-button" onClick={() => handleRemoveFromCart(item._id)}>Remove</button> {/* Add a class for the remove button */}
                         </div>
                     ))}
+                    <p>Total Price: ${totalPrice}</p>
+                    <button onClick={handleDeleteCart}>Checkout</button>
                 </div>
             )}
-
-            {cart && Object.values(cart).length != 0 && <button onClick={handleDeleteCart}>Checkout</button>}
         </div>
     );
 }
