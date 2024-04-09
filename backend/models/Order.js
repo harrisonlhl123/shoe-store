@@ -16,10 +16,12 @@ const orderSchema = new Schema({
         quantity: Number
     }],
     totalPrice: Number,
-    createdAt: {
-        type: Date,
-        default: Date.now
-    }
+    // createdAt: {
+    //     type: Date,
+    //     default: Date.now
+    // }
+}, {
+    timestamps: true
 });
 
 module.exports = mongoose.model('Order', orderSchema);
