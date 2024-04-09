@@ -20,7 +20,21 @@ function Profile() {
       <ul>
         {orders.map(order => (
           <li key={order._id}>
-            {/* Display order details */}
+            <h3>Order ID: {order._id}</h3>
+            <p>Created At: {new Date(order.createdAt).toLocaleString()}</p>
+            <ul>
+              {order.items.map(item => (
+                <li key={item._id}>
+                  <h4>{item.quantity} x {item.size}</h4>
+                  <div className="shoe-details">
+                    <img src={`http://localhost:5000/images/${item.shoeId.photoUrl}`} alt={item.shoeId.name} />
+                    <h5>{item.shoeId.name}</h5>
+                    <p>Price: ${item.shoeId.price}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <p>Total Price: ${order.totalPrice}</p>
           </li>
         ))}
       </ul>
@@ -29,3 +43,4 @@ function Profile() {
 }
 
 export default Profile;
+

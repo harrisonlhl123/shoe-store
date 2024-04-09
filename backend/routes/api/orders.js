@@ -15,7 +15,7 @@ router.get('/user/:userId', requireUser, async (req, res) => {
             return res.status(403).json({ message: 'Unauthorized access to user cart' });
         }
 
-        const orders = await Order.find({ user: authenticatedUserId });
+        const orders = await Order.find({ user: authenticatedUserId }).populate('items.shoeId', '_id name price photoUrl');
         res.json(orders);
     } catch (err) {
         console.error(err);
