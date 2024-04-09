@@ -4,12 +4,14 @@ import session from './session';
 import errors from './errors';
 import shoes from './shoes';
 import cart from './cart';
+import orders from './orders';
 
 const rootReducer = combineReducers({
   session,
   errors,
   shoes,
-  cart
+  cart,
+  orders
 });
 
 let enhancer;
