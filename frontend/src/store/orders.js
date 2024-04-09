@@ -32,7 +32,7 @@ export const fetchOrders = (userId) => async (dispatch) => {
 
 export const createOrder = (cartItems, userId) => async (dispatch) => {
     try {
-      const res = await jwtFetch('/api/orders', {
+      const res = await jwtFetch('/api/orders/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
