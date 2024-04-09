@@ -8,6 +8,7 @@ require('./models/User');
 require('./models/Category');
 require('./models/Shoe');
 require('./models/Cart');
+require('./models/Order');
 require('./config/passport');
 const passport = require('passport');
 
@@ -15,6 +16,7 @@ const usersRouter = require('./routes/api/users'); // update the import file pat
 const categoriesRouter = require('./routes/api/categories');
 const shoesRouter = require('./routes/api/shoes');
 const cartsRouter = require('./routes/api/cart');
+const ordersRouter = require('./routes/api/orders');
 const csrfRouter = require('./routes/api/csrf');
 
 const app = express();
@@ -60,6 +62,7 @@ app.use('/api/categories', categoriesRouter);
 app.use('/api/shoes', shoesRouter);
 app.use('/api/cart', cartsRouter);
 app.use('/api/csrf', csrfRouter);
+app.use('/api/orders', ordersRouter);
 
 // Express custom middleware for catching all unmatched requests and formatting
 // a 404 error to be sent as the response.
