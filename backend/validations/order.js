@@ -8,9 +8,9 @@ const validateOrderInput = [
     check('items')
         .exists({ checkFalsy: true })
         .withMessage('items array required'),
-    check('totalPrice')
-        .exists({ checkFalsy: true })
-        .withMessage('Total price is required'),
+    // check('totalPrice')
+    //     .exists({ checkFalsy: true })
+    //     .withMessage('Total price is required'),
     handleValidationErrors
 ];
 

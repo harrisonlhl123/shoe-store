@@ -15,7 +15,7 @@ const orderSchema = new Schema({
         size: Number,
         quantity: Number
     }],
-    totalPrice: Number,
+    // totalPrice: Number,
     // createdAt: {
     //     type: Date,
     //     default: Date.now
