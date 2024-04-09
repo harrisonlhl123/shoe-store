@@ -27,8 +27,9 @@ const CartShow = () => {
     };
 
     const handleDeleteCart = () => {
-        dispatch(deleteCart(cartId))
+        dispatch(createOrder(cart, user._id))
         .then(() => {
+            dispatch(deleteCart(cartId))
             dispatch(fetchCart(user._id));
             history.push('/thanks');
         })
