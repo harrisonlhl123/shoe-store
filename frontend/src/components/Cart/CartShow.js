@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { fetchCart, removeFromCart, deleteCart } from "../../store/cart";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { fetchShoe, fetchShoes } from "../../store/shoes";
+import { createOrder } from "../../store/orders";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import './CartShow.css';
 
@@ -27,8 +28,9 @@ const CartShow = () => {
     };
 
     const handleDeleteCart = () => {
-        dispatch(deleteCart(cartId))
+        dispatch(createOrder(cart, user._id))
         .then(() => {
+            dispatch(deleteCart(cartId))
             dispatch(fetchCart(user._id));
             history.push('/thanks');
         })
