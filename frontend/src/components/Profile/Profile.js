@@ -7,9 +7,8 @@ function Profile() {
   const dispatch = useDispatch();
   const currentUser = useSelector(state => state.session.user);
   const orders = useSelector(state => state.orders);
-  const orderArray = Object.values(orders);
-  const totalPriceArray = orderArray.map(singleOrder => {
-    const totalPrice = Object.values(singleOrder.items).reduce((total, item) => {
+  const totalPriceArray = orders.map(singleOrder => {
+    const totalPrice = (singleOrder.items).reduce((total, item) => {
       return total + (item.quantity * item.shoeId.price);
     }, 0)
 
@@ -27,7 +26,7 @@ function Profile() {
       <h1>Profile Page</h1>
       <div className="order-history">
         <h2>Order History</h2>
-        {orderArray.map((order, index) => (
+        {orders.map((order, index) => (
           <div key={order._id} className="order">
             <div className="order-details">
               <h3>Order #: {order._id}</h3>
