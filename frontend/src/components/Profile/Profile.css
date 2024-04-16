@@ -1,0 +1,50 @@
+/* CSS for Profile Page */
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: sans-serif;
+  }
+  
+  .order-history {
+    margin-top: 20px;
+  }
+  
+  .order {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .order-details {
+    margin-bottom: 10px;
+  }
+  
+  .order-items {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .order-item {
+    margin-bottom: 10px;
+  }
+  
+  .shoe-details {
+    display: flex;
+    align-items: center;
+  }
+  
+  .shoe-image {
+    width: 100px;
+    margin-right: 10px;
+  }
+  
+  .shoe-info {
+    flex: 1;
+  }
+  
+  .total-price {
+    font-weight: bold;
+  }
+  

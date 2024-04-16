@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchOrders } from '../../store/orders';
+import './Profile.css';
 
 function Profile() {
   const dispatch = useDispatch();
@@ -22,30 +23,34 @@ function Profile() {
   }, [dispatch, currentUser]);
 
   return (
-    <div>
+    <div className="profile-container">
       <h1>Profile Page</h1>
-      <h2>Order History</h2>
-      <ul>
+      <div className="order-history">
+        <h2>Order History</h2>
         {orderArray.map((order, index) => (
-          <li key={order._id}>
-            <h3>Order ID: {order._id}</h3>
-            <p>Created At: {new Date(order.createdAt).toLocaleString()}</p>
-            <ul>
+          <div key={order._id} className="order">
+            <div className="order-details">
+              <h3>Order #: {order._id}</h3>
+              <p>Order Date: {new Date(order.createdAt).toLocaleString()}</p>
+            </div>
+            <ul className="order-items">
               {order.items.map(item => (
-                <li key={item._id}>
+                <li key={item._id} className="order-item">
                   <h4>{item.quantity} x {item.size}</h4>
                   <div className="shoe-details">
-                    <img src={`http://localhost:5000/images/${item.shoeId.photoUrl}`} alt={item.shoeId.name} />
-                    <h5>{item.shoeId.name}</h5>
-                    <p>Price: ${item.shoeId.price}</p>
+                    <img className="shoe-image" src={`http://localhost:5000/images/${item.shoeId.photoUrl}`} alt={item.shoeId.name} />
+                    <div className="shoe-info">
+                      <h5>{item.shoeId.name}</h5>
+                      <p>Price: ${item.shoeId.price}</p>
+                    </div>
                   </div>
                 </li>
               ))}
             </ul>
-            <p>Total Price: ${totalPriceArray[index]}</p>
-          </li>
+            <p className="total-price">Total Price: ${totalPriceArray[index]}</p>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
