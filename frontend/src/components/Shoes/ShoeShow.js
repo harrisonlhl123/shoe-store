@@ -3,20 +3,20 @@ import { addToCart } from '../../store/cart';
 const { useEffect, useState } = require("react");
 const { useDispatch, useSelector } = require("react-redux");
 const { useParams, useHistory } = require("react-router-dom/cjs/react-router-dom.min");
-const { fetchShoes } = require("../../store/shoes");
+const { fetchShoe } = require("../../store/shoes");
 
 
 const ShowShoe = () => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const { id } = useParams();
+    const { shoeId } = useParams();
     const [selectedSize, setSelectedSize] = useState(null);
     
     useEffect(() => {
-        dispatch(fetchShoes());
-    }, [id])
+        dispatch(fetchShoe(shoeId));
+    }, [shoeId])
     
-    const shoe = useSelector(state => state.shoes ? state.shoes[id] : null)
+    const shoe = useSelector(state => state.shoes ? state.shoes[shoeId] : null)
     const cart = useSelector((state) => state.cart);
     const user = useSelector(state => state.session.user?._id);
 

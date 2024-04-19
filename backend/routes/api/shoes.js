@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
 });
 
 // GET all shoes from specified category
-router.get('/:categoryId/', async (req, res, next) => {
+router.get('/category/:categoryId/', async (req, res, next) => {
     try {
         const shoes = await Shoe.find({ category: req.params.categoryId })
             .populate('category', '_id name');
@@ -36,9 +36,9 @@ router.get('/:categoryId/', async (req, res, next) => {
 });
 
 //GET one shoe
-router.get('/:id', async (req, res, next) => {
+router.get('/:shoeId', async (req, res, next) => {
     try {
-        const shoe = await Shoe.findById(req.params.id)
+        const shoe = await Shoe.findById(req.params.shoeId)
             .populate('category', '_id name')
 
         return res.json(shoe);

@@ -28,7 +28,7 @@ function App() {
       <NavBar />
       <Switch>
         <Route exact path="/" component={MainPage} />
-        <Route exact path="/shoes/:id" component={ShowShoe}/>
+        <Route exact path="/shoes/:shoeId" component={ShowShoe}/>
         <AuthRoute exact path="/login" component={LoginForm} />
         <AuthRoute exact path="/signup" component={SignupForm} />
 

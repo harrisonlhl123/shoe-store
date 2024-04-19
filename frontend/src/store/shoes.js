@@ -1,7 +1,7 @@
 import jwtFetch from './jwt';
 
 const RECEIVE_SHOES = "shoes/RECEIVE_SHOES";
-const RECEIVE_SHOE = "shoes/RECEIVE_SHOES";
+const RECEIVE_SHOE = "shoes/RECEIVE_SHOE";
 const RECEIVE_CATEGORY_SHOES = "shoes/RECEIVE_CATEGORY_SHOES";
 
 const receiveShoes = shoes => ({
@@ -36,7 +36,7 @@ export const fetchShoe = (shoeId) => async dispatch => {
 };
 
 export const fetchCategoryShoes = (categoryId) => async dispatch => {
-    const res = await jwtFetch(`/api/shoes/${categoryId}/`);
+    const res = await jwtFetch(`/api/shoes/category/${categoryId}`);
     if (res.ok) {
         const shoes = await res.json();
         dispatch(receiveCategoryShoes(shoes));
