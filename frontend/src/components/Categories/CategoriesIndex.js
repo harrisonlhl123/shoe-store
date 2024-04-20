@@ -1,4 +1,5 @@
 import OneCategory from './OneCategory';
+import './CategoriesIndex.css';
 const { useEffect } = require("react")
 const { useDispatch, useSelector } = require("react-redux");
 const { fetchCategories } = require("../../store/categories");
@@ -13,9 +14,11 @@ const CategoriesIndex = () => {
 
     return (
         <>
-            {categories.map((category) => {
-                return <OneCategory category={category} />
-            })}
+            <div id="categories-main">
+                {categories.map((category) => {
+                    return <OneCategory category={category} />
+                })}
+            </div>
         </>
     )
 }

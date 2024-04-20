@@ -6,8 +6,8 @@ function MainPage() {
     return (
       <>
         <div id="main-page">
-          <h1>Best Sellers</h1>
           <CategoriesIndex />
+          <h1>Best Sellers</h1>
           <AllShoes />
         </div>
       </>
