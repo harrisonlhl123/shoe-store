@@ -5,13 +5,15 @@ import errors from './errors';
 import shoes from './shoes';
 import cart from './cart';
 import orders from './orders';
+import categories from './categories';
 
 const rootReducer = combineReducers({
   session,
   errors,
   shoes,
   cart,
-  orders
+  orders,
+  categories
 });
 
 let enhancer;

@@ -15,6 +15,7 @@ import Thanks from './components/Cart/Thanks';
 
 import { getCurrentUser } from './store/session';
 import { Route } from 'react-router-dom/cjs/react-router-dom.min';
+import CategoryShoes from './components/Shoes/CategoryShoes';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -29,6 +30,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={MainPage} />
         <Route exact path="/shoes/:shoeId" component={ShowShoe}/>
+        <Route exact path="/categories/:categoryId" component={CategoryShoes} />
         <AuthRoute exact path="/login" component={LoginForm} />
         <AuthRoute exact path="/signup" component={SignupForm} />
 

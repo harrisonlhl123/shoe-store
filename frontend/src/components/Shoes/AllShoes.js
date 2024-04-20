@@ -15,9 +15,9 @@ function AllShoes() {
     return (
         <>  
             <div id="all-shoes">
-                {shoes.map((shoe) => (
-                    <OneShoe key={shoe._id} shoe={shoe}/>
-                ))}
+                {shoes.map((shoe) => {
+                    return <OneShoe key={shoe._id} shoe={shoe}/>
+                })}
             </div>
         </>
     )

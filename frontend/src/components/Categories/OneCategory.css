@@ -1,0 +1,12 @@
+#category-link {
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+    padding: 10px;
+    color: black;
+}
+
+#category-link:hover {
+    cursor: pointer;
+    background-color: gray;
+}
