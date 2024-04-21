@@ -43,6 +43,16 @@ export const fetchCategoryShoes = (categoryId) => async dispatch => {
     }
 };
 
+
+export const searchShoes = (searchQuery) => async dispatch => {
+    const res = await jwtFetch(`/api/shoes/lookup/search?name=${searchQuery}`);
+    if (res.ok) {
+        const shoes = await res.json();
+        return shoes;
+    }
+};
+
+
 const shoesReducer = (state = {}, action) => {
     const newState = {...state}
     switch(action.type){
