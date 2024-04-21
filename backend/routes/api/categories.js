@@ -27,7 +27,6 @@ router.get('/:id', async (req, res, next) => {
     catch (err) {
         const error = new Error('Category not found')
         error.statusCode = 404;
-        error.errors = { message: "No Category found with that id" }
         return next(error);
     }
 });

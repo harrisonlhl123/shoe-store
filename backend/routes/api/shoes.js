@@ -46,7 +46,6 @@ router.get('/:shoeId', async (req, res, next) => {
     catch (err) {
         const error = new Error('Shoe not found');
         error.statusCode = 404;
-        error.errors = { message: "No shoe found with that id" }
         return next(error);
     }
 
