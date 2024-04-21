@@ -52,4 +52,25 @@ router.get('/:shoeId', async (req, res, next) => {
 
 });
 
+
+// Search shoes
+router.get('/lookup/search', async (req, res, next) => {
+    try {
+        const { name } = req.query;
+
+        const searchQuery = {};
+        if (name) {
+            searchQuery.name = { $regex: new RegExp(name, 'i') };
+        }
+
+        const shoes = await Shoe.find(searchQuery)
+            .populate('category', '_id name');
+
+        return res.json(shoes);
+    } catch (err) {
+        return res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+
 module.exports = router;
