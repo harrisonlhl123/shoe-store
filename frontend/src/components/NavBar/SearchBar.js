@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { searchShoes } from '../../store/shoes';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useHistory} from 'react-router-dom/cjs/react-router-dom.min';
+import './NavBar.css';
 
 const SearchBar = () => {
   const history = useHistory();
@@ -40,15 +41,16 @@ const SearchBar = () => {
       />
       {searchResults.length > 0 && (
         <div className="search-results-dropdown">
+            {console.log(searchResults)}
           {searchResults.map((result) => (
             // Render each search result as needed
             <div key={result._id} className="search-result-item" onClick={() => { 
-              history.push(`/shoes/${result._id}`) 
-              setSearchQuery('');
-              setSearchResults([]);
-            }}>
-              <img src={result.photoUrl} alt={result.name} />
-              <span>{result.name}</span>
+                history.push(`/shoes/${result._id}`);
+                setSearchQuery('');
+                setSearchResults([]);
+                }}>
+                <img src={`http://localhost:5000/images/${result.photoUrl}`} />
+                <span>{result.name}</span>
             </div>
           ))}
         </div>

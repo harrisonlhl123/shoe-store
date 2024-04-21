@@ -43,8 +43,8 @@ function NavBar () {
       <div id="nav-bar-container" style={{ fontFamily: 'sans-serif' }}>
         <Link to="/" className="links">
           <h1>GOAT</h1>
-          <SearchBar />
         </Link>
+        <SearchBar />
         { getLinks() }
       </div>
     </>
